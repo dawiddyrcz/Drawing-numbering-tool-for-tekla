@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingNumberingPlugin", "DrawingNumberingPlugin\DrawingNumberingPlugin.csproj", "{97196BC5-5C5B-4476-A474-271F5C143F78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97196BC5-5C5B-4476-A474-271F5C143F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97196BC5-5C5B-4476-A474-271F5C143F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97196BC5-5C5B-4476-A474-271F5C143F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97196BC5-5C5B-4476-A474-271F5C143F78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D99B4DB-FD01-416E-90D8-48038399C731}
+	EndGlobalSection
+EndGlobal
