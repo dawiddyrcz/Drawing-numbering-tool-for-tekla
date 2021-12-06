@@ -6,7 +6,7 @@ using Tekla.Structures.Plugins;
 
 namespace DrawingNumberingPlugin
 {
-    public class DrawingNumbering
+    public class DrawingNumberingPlugin_StructuresData
     {
         public string _Prefix;
         public int _StartNumber;
@@ -15,27 +15,12 @@ namespace DrawingNumberingPlugin
         public int _Title;
         public int _OnlyPrefix;
 
-        private readonly Model _model;
-
-        public DrawingNumbering()
+        public DrawingNumberingPlugin_StructuresData()
         {
-            _model = new Model();
+
         }
 
-        private class ValueCorrector : PluginBase
-        {
-            public override List<InputDefinition> DefineInput()
-            {
-                throw new NotImplementedException();
-            }
-
-            public override bool Run(List<InputDefinition> Input)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        private void GetValuesFromDialog()
+        public void CorrectValues()
         {
             var value = new ValueCorrector();
             if (value.IsDefaultValue(_Prefix) || _Prefix == "")
@@ -50,18 +35,50 @@ namespace DrawingNumberingPlugin
                 _Title = 0;
             if (value.IsDefaultValue(_OnlyPrefix))
                 _OnlyPrefix = 0;
+        }
+
+
+        private class ValueCorrector : PluginBase
+        {
+            public override List<InputDefinition> DefineInput()
+            {
+                throw new NotImplementedException();
+            }
+
+            public override bool Run(List<InputDefinition> Input)
+            {
+                throw new NotImplementedException();
+            }
+        }
+    }
+
+    public class DrawingNumbering
+    {
+        private readonly Model _model;
+        private readonly DrawingNumberingPlugin_StructuresData data;
+
+        public DrawingNumbering(DrawingNumberingPlugin_StructuresData data)
+        {
+            this._model = new Model();
+            this.data = data;
+        }
+
+
+        private void GetValuesFromDialog()
+        {
+            
 
         }
 
         private string GetCurrentNumberWithPrefixAndPostFix(string prefix, string postfix, int currentNumber)
         {
-            if (_OnlyPrefix == 1) return prefix;
+            if (data._OnlyPrefix == 1) return prefix;
             else return prefix + GetCurrentNumber(currentNumber) + postfix;
         }
 
         private string GetCurrentNumber(int currentNumber)
         {
-            var digits = _Digits;
+            var digits = data._Digits;
 
             if (digits > 0)
             {
@@ -111,7 +128,7 @@ namespace DrawingNumberingPlugin
                 {
                     progress.Display(10, "Task is in progress", "Task is in progress", "Cancel", " ");
                     stopwatch.Start();
-                    int currentNumber = _StartNumber;
+                    int currentNumber = data._StartNumber;
                     int checkedDrawings = 0;
                     double medTimeForOne = 0;
 
@@ -121,9 +138,9 @@ namespace DrawingNumberingPlugin
 
                         var currentDrawing = selectedDrawings.Current as Tekla.Structures.Drawing.Drawing;
                         bool modified = false;
-                        var currentNumberString = GetCurrentNumberWithPrefixAndPostFix(_Prefix, _Postfix, currentNumber);
+                        var currentNumberString = GetCurrentNumberWithPrefixAndPostFix(data._Prefix, data._Postfix, currentNumber);
 
-                        switch (_Title)
+                        switch (data._Title)
                         {
                             case (0):
                                 if (currentDrawing.Name != currentNumberString)
@@ -158,7 +175,7 @@ namespace DrawingNumberingPlugin
                                 try
                                 {
                                     var udaHandler = new UDAHandler();
-                                    var udaName = udaHandler.GetUDAByIndex(_Title - 4);
+                                    var udaName = udaHandler.GetUDAByIndex(data._Title - 4);
 
                                     if (udaName != "")
                                     {

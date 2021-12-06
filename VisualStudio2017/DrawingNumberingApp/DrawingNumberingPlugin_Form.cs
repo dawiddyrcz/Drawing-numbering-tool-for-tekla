@@ -17,6 +17,7 @@ namespace DrawingNumberingPlugin
             GenerateExampleNumbers();
             EnableDisableControls();
             FillTitleCombobox();
+
             this.InitializeForm();
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
             backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
@@ -35,14 +36,8 @@ namespace DrawingNumberingPlugin
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var dr = new DrawingNumbering();
-            dr._Prefix = this.prefix_textBox.Text;
-            dr._StartNumber = (int)this.startNumber_numericUpDown.Value;
-            dr._Digits = (int)this.digits_numericUpDown.Value;
-            dr._Postfix = this.postfix_textBox.Text;
-            dr._Title = this.title_comboBox.SelectedIndex;
-            dr._OnlyPrefix = this.onlyPrefix_checkBox.Checked ? 1 : 0;
-            dr.Run();
+            var drawingNumbering = new DrawingNumbering(data);
+            drawingNumbering.Run();
         }
 
         private void FillTitleCombobox()
@@ -149,10 +144,18 @@ namespace DrawingNumberingPlugin
             this.Close();
         }
 
+        private DrawingNumberingPlugin_StructuresData data;
         private void createApplyCancel1_CreateClicked(object sender, EventArgs e)
         {
             this.Apply();
             //this.Create();
+            data = new DrawingNumberingPlugin_StructuresData();
+            data._Prefix = this.prefix_textBox.Text;
+            data._StartNumber = (int)this.startNumber_numericUpDown.Value;
+            data._Digits = (int)this.digits_numericUpDown.Value;
+            data._Postfix = this.postfix_textBox.Text;
+            data._Title = this.title_comboBox.SelectedIndex;
+            data._OnlyPrefix = this.onlyPrefix_checkBox.Checked ? 1 : 0;
             backgroundWorker.RunWorkerAsync();
         }
 
