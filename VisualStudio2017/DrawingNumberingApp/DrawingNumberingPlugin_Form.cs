@@ -36,8 +36,12 @@ namespace DrawingNumberingPlugin
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var drawingNumbering = new DrawingNumbering(data);
-            drawingNumbering.Run();
+            try
+            {
+                var drawingNumbering = new DrawingNumbering(data);
+                drawingNumbering.Run();
+            }
+            catch (Exception ex) { HandleException(ex); }
         }
 
         private void FillTitleCombobox()
@@ -65,20 +69,27 @@ namespace DrawingNumberingPlugin
 
         private void GenerateExampleNumbers()
         {
-            if (int.TryParse(this.startNumber_numericUpDown.Text, out int startNumber))
+            try
             {
-                if (startNumber >= 0)
+                if (int.TryParse(this.startNumber_numericUpDown.Text, out int startNumber))
                 {
-                    string exampleText = "";
-
-                    for (int i = startNumber; i < startNumber + 7; i++)
+                    if (startNumber >= 0)
                     {
-                        string newLine = GetCurrentNumberWithPrefixAndPostFix(this.prefix_textBox.Text, this.postfix_textBox.Text, i);
-                        exampleText = exampleText + newLine + "\n";
-                    }
+                        string exampleText = "";
 
-                    this.example_label.Text = exampleText; 
+                        for (int i = startNumber; i < startNumber + 7; i++)
+                        {
+                            string newLine = GetCurrentNumberWithPrefixAndPostFix(this.prefix_textBox.Text, this.postfix_textBox.Text, i);
+                            exampleText = exampleText + newLine + "\n";
+                        }
+
+                        this.example_label.Text = exampleText;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
             }
         }
 
@@ -147,16 +158,28 @@ namespace DrawingNumberingPlugin
         private DrawingNumberingPlugin_StructuresData data;
         private void createApplyCancel1_CreateClicked(object sender, EventArgs e)
         {
-            this.Apply();
-            //this.Create();
-            data = new DrawingNumberingPlugin_StructuresData();
-            data._Prefix = this.prefix_textBox.Text;
-            data._StartNumber = (int)this.startNumber_numericUpDown.Value;
-            data._Digits = (int)this.digits_numericUpDown.Value;
-            data._Postfix = this.postfix_textBox.Text;
-            data._Title = this.title_comboBox.SelectedIndex;
-            data._OnlyPrefix = this.onlyPrefix_checkBox.Checked ? 1 : 0;
-            backgroundWorker.RunWorkerAsync();
+            try
+            {
+                this.Apply();
+                data = new DrawingNumberingPlugin_StructuresData();
+                data._Prefix = this.prefix_textBox.Text;
+                data._StartNumber = (int)this.startNumber_numericUpDown.Value;
+                data._Digits = (int)this.digits_numericUpDown.Value;
+                data._Postfix = this.postfix_textBox.Text;
+                data._Title = this.title_comboBox.SelectedIndex;
+                data._OnlyPrefix = this.onlyPrefix_checkBox.Checked ? 1 : 0;
+                data.CorrectValues();
+                backgroundWorker.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+            }
+        }
+
+        private void HandleException(Exception ex)
+        {
+            System.Windows.Forms.MessageBox.Show(ex.ToString());
         }
 
         private void startNumber_numericUpDown_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -195,6 +218,15 @@ namespace DrawingNumberingPlugin
         {
             GenerateExampleNumbers();
             EnableDisableControls();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(linkLabel1.Text);
+            }
+            catch { }
         }
     }
 }

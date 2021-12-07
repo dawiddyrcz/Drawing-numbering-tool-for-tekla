@@ -63,13 +63,6 @@ namespace DrawingNumberingPlugin
             this.data = data;
         }
 
-
-        private void GetValuesFromDialog()
-        {
-            
-
-        }
-
         private string GetCurrentNumberWithPrefixAndPostFix(string prefix, string postfix, int currentNumber)
         {
             if (data._OnlyPrefix == 1) return prefix;
@@ -100,7 +93,6 @@ namespace DrawingNumberingPlugin
 
         public bool Run()
         {
-            GetValuesFromDialog();
             int succesfulModified = 0;
 
             var selectedDrawings = new Tekla.Structures.Drawing.DrawingHandler().GetDrawingSelector().GetSelected();
