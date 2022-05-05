@@ -20,11 +20,13 @@ namespace DrawingNumberingPlugin
             FillTitleCombobox();
 
             this.InitializeForm();
+            backgroundWorker.WorkerSupportsCancellation = true;
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
             backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
             backgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
 
             this.Shown += DrawingNumberingPluginForm_Shown;
+            progress_label.Text = "Ready";
         }
 
         private void DrawingNumberingPluginForm_Shown(object sender, EventArgs e)
@@ -50,7 +52,7 @@ namespace DrawingNumberingPlugin
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            workInProgress = false;
         }
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -58,7 +60,16 @@ namespace DrawingNumberingPlugin
             try
             {
                 var drawingNumbering = new DrawingNumbering(data);
-                drawingNumbering.Run();
+                drawingNumbering.Progress += (count, max, message) =>
+                {
+                    Invoke(new Action(() => 
+                    { 
+                        progress_label.Text = message;
+                        progressBar1.Value = (int) (100.0 * count / max);
+                    }));
+                };
+
+                drawingNumbering.Run(e);
             }
             catch (Exception ex) { HandleException(ex); }
         }
@@ -171,15 +182,18 @@ namespace DrawingNumberingPlugin
 
         private void createApplyCancel1_CancelClicked(object sender, EventArgs e)
         {
-            this.Close();
+            if (workInProgress)
+                backgroundWorker.CancelAsync();
         }
 
+        bool workInProgress = false;
         private DrawingNumberingPlugin_StructuresData data;
         private void createApplyCancel1_CreateClicked(object sender, EventArgs e)
         {
             try
             {
                 this.Apply();
+                workInProgress = true;
                 data = new DrawingNumberingPlugin_StructuresData();
                 data._Prefix = this.prefix_textBox.Text;
                 data._StartNumber = (int)this.startNumber_numericUpDown.Value;

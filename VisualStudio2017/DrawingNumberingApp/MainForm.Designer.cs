@@ -47,6 +47,8 @@ namespace DrawingNumberingPlugin
             this.title_comboBox = new System.Windows.Forms.ComboBox();
             this.onlyPrefix_checkBox = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progress_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.startNumber_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digits_numericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -158,7 +160,7 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetAttributeTypeName(this.createApplyCancel1, null);
             this.structuresExtender.SetBindPropertyName(this.createApplyCancel1, null);
             this.createApplyCancel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.createApplyCancel1.Location = new System.Drawing.Point(0, 326);
+            this.createApplyCancel1.Location = new System.Drawing.Point(0, 356);
             this.createApplyCancel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.createApplyCancel1.Name = "createApplyCancel1";
             this.createApplyCancel1.Size = new System.Drawing.Size(544, 35);
@@ -278,7 +280,7 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetAttributeTypeName(this.linkLabel1, null);
             this.linkLabel1.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.linkLabel1, null);
-            this.linkLabel1.Location = new System.Drawing.Point(438, 306);
+            this.linkLabel1.Location = new System.Drawing.Point(265, 337);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(100, 15);
             this.linkLabel1.TabIndex = 14;
@@ -286,7 +288,32 @@ namespace DrawingNumberingPlugin
             this.linkLabel1.Text = "https://ddbim.pl/";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // DrawingNumberingPluginForm
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.structuresExtender.SetAttributeName(this.progressBar1, null);
+            this.structuresExtender.SetAttributeTypeName(this.progressBar1, null);
+            this.structuresExtender.SetBindPropertyName(this.progressBar1, null);
+            this.progressBar1.Location = new System.Drawing.Point(3, 337);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(536, 14);
+            this.progressBar1.TabIndex = 15;
+            // 
+            // progress_label
+            // 
+            this.progress_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.structuresExtender.SetAttributeName(this.progress_label, null);
+            this.structuresExtender.SetAttributeTypeName(this.progress_label, null);
+            this.progress_label.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.progress_label, null);
+            this.progress_label.Location = new System.Drawing.Point(5, 316);
+            this.progress_label.Name = "progress_label";
+            this.progress_label.Size = new System.Drawing.Size(82, 15);
+            this.progress_label.TabIndex = 16;
+            this.progress_label.Text = "progress_label";
+            // 
+            // MainForm
             // 
             this.structuresExtender.SetAttributeName(this, null);
             this.structuresExtender.SetAttributeTypeName(this, null);
@@ -294,7 +321,9 @@ namespace DrawingNumberingPlugin
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.structuresExtender.SetBindPropertyName(this, null);
-            this.ClientSize = new System.Drawing.Size(544, 361);
+            this.ClientSize = new System.Drawing.Size(544, 391);
+            this.Controls.Add(this.progress_label);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.onlyPrefix_checkBox);
             this.Controls.Add(this.title_comboBox);
@@ -313,9 +342,9 @@ namespace DrawingNumberingPlugin
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.MaximumSize = new System.Drawing.Size(560, 400);
-            this.MinimumSize = new System.Drawing.Size(560, 400);
-            this.Name = "DrawingNumberingPluginForm";
+            this.MaximumSize = new System.Drawing.Size(560, 430);
+            this.MinimumSize = new System.Drawing.Size(560, 430);
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Drawing numbering";
             ((System.ComponentModel.ISupportInitialize)(this.startNumber_numericUpDown)).EndInit();
@@ -342,5 +371,7 @@ namespace DrawingNumberingPlugin
         private System.Windows.Forms.ComboBox title_comboBox;
         private System.Windows.Forms.CheckBox onlyPrefix_checkBox;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label progress_label;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Tekla.Structures.Model;
 using Tekla.Structures.Plugins;
@@ -52,10 +53,13 @@ namespace DrawingNumberingPlugin
         }
     }
 
+    public delegate void ProgressDelegate(int count, int max, string message);
+
     public class DrawingNumbering
     {
         private readonly Model _model;
         private readonly DrawingNumberingPlugin_StructuresData data;
+        public event ProgressDelegate Progress;
 
         public DrawingNumbering(DrawingNumberingPlugin_StructuresData data)
         {
@@ -91,11 +95,22 @@ namespace DrawingNumberingPlugin
                 return "";
         }
 
-        public bool Run()
+        private void UpdateProgress(int count, int max, string message)
+        {
+            max = Math.Max(1, max);
+            count = Math.Max(0, count);
+            count = Math.Min(count, max);
+            if (string.IsNullOrEmpty(message)) message = string.Empty;
+
+            Progress?.Invoke(count, max, message);
+        }
+
+        public bool Run(DoWorkEventArgs e)
         {
             int succesfulModified = 0;
-
-            var selectedDrawings = new Tekla.Structures.Drawing.DrawingHandler().GetDrawingSelector().GetSelected();
+            var dh = new Tekla.Structures.Drawing.DrawingHandler();
+            dh.CloseActiveDrawing();
+            var selectedDrawings = dh.GetDrawingSelector().GetSelected();
             var drawingsCount = selectedDrawings.GetSize();
             if (drawingsCount == 0)
             {
@@ -113,12 +128,11 @@ namespace DrawingNumberingPlugin
 
             if (result == DialogResult.Yes)
             {
-                var progress = new Tekla.Structures.Model.Operations.Operation.ProgressBar();
-
                 var stopwatch = new System.Diagnostics.Stopwatch();
                 try
                 {
-                    progress.Display(10, "Task is in progress", "Task is in progress", "Cancel", " ");
+                    UpdateProgress(0, 1, "Trying to start");
+
                     stopwatch.Start();
                     int currentNumber = data._StartNumber;
                     int checkedDrawings = 0;
@@ -126,7 +140,7 @@ namespace DrawingNumberingPlugin
 
                     while (selectedDrawings.MoveNext())
                     {
-                        if (progress.Canceled()) break;
+                        if(e.Cancel ) break;
 
                         var currentDrawing = selectedDrawings.Current as Tekla.Structures.Drawing.Drawing;
                         currentDrawing.Select();
@@ -187,18 +201,22 @@ namespace DrawingNumberingPlugin
                         currentNumber++;
                         checkedDrawings++;
                         medTimeForOne = stopwatch.Elapsed.TotalMinutes / checkedDrawings;
-                        progress.SetProgress(checkedDrawings + "/" + drawingsCount + "\t" + Math.Round(medTimeForOne * (drawingsCount - checkedDrawings)) + " minutes left", 100 * checkedDrawings / drawingsCount);
+
+                        string message = checkedDrawings + "/" + drawingsCount + " " + Math.Round(medTimeForOne * (drawingsCount - checkedDrawings)) + " minutes left";
+                        UpdateProgress(checkedDrawings, drawingsCount, message);
+
                     }
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
-                    progress.Close();
                     stopwatch.Stop();
-                    MessageBox.Show("Task has been completed.\nModified drawings: " + succesfulModified.ToString() + ".\nTime elapsed: " + Math.Round(stopwatch.Elapsed.TotalSeconds).ToString() + " seconds");
+                    string message = "Task has been completed. Modified drawings: " + succesfulModified.ToString() + ". Time elapsed: " 
+                        + Math.Round(stopwatch.Elapsed.TotalSeconds).ToString() + " seconds";
+                    UpdateProgress(0,1,message);
                 }
             }
 
