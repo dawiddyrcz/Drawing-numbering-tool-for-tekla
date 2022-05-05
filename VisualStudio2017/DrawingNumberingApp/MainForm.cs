@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Forms;
 using Tekla.Structures.Dialog;
 
 namespace DrawingNumberingPlugin
@@ -39,7 +40,7 @@ namespace DrawingNumberingPlugin
 
         private void Events_TeklaStructuresExit()
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
