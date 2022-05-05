@@ -14,7 +14,7 @@ namespace DrawingNumberingPlugin
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 IntPtr h1 = Tekla.Structures.Dialog.MainWindow.Frame.Handle;
-                var mainForm = new DrawingNumberingPluginForm();
+                var mainForm = new MainForm();
                 mainForm.Show(new WindowWrapper(h1));
                 Application.Run();
             }

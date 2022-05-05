@@ -14,7 +14,7 @@ namespace DrawingNumberingPlugin
         public string someAttribute;
     }
 
-    [Plugin("Drawing Numbering Tool")] 
+    [Plugin("Drawing Numbering Tool 2")] 
     [PluginUserInterface("DrawingNumberingPlugin.StarterForm")]
     [InputObjectDependency(PluginBase.InputObjectDependency.NOT_DEPENDENT)]
    

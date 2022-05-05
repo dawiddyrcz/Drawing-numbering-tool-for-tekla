@@ -3,7 +3,7 @@
  */
 namespace DrawingNumberingPlugin
 {
-    partial class DrawingNumberingPluginForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace DrawingNumberingPlugin
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawingNumberingPluginForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.prefix_textBox = new System.Windows.Forms.TextBox();
             this.postfix_textBox = new System.Windows.Forms.TextBox();
             this.startNumber_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -158,7 +158,7 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetAttributeTypeName(this.createApplyCancel1, null);
             this.structuresExtender.SetBindPropertyName(this.createApplyCancel1, null);
             this.createApplyCancel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.createApplyCancel1.Location = new System.Drawing.Point(0, 276);
+            this.createApplyCancel1.Location = new System.Drawing.Point(0, 326);
             this.createApplyCancel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.createApplyCancel1.Name = "createApplyCancel1";
             this.createApplyCancel1.Size = new System.Drawing.Size(544, 35);
@@ -278,7 +278,7 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetAttributeTypeName(this.linkLabel1, null);
             this.linkLabel1.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.linkLabel1, null);
-            this.linkLabel1.Location = new System.Drawing.Point(436, 252);
+            this.linkLabel1.Location = new System.Drawing.Point(438, 306);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(100, 15);
             this.linkLabel1.TabIndex = 14;
@@ -294,7 +294,7 @@ namespace DrawingNumberingPlugin
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.structuresExtender.SetBindPropertyName(this, null);
-            this.ClientSize = new System.Drawing.Size(544, 311);
+            this.ClientSize = new System.Drawing.Size(544, 361);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.onlyPrefix_checkBox);
             this.Controls.Add(this.title_comboBox);
@@ -313,8 +313,8 @@ namespace DrawingNumberingPlugin
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.MaximumSize = new System.Drawing.Size(560, 350);
-            this.MinimumSize = new System.Drawing.Size(560, 350);
+            this.MaximumSize = new System.Drawing.Size(560, 400);
+            this.MinimumSize = new System.Drawing.Size(560, 400);
             this.Name = "DrawingNumberingPluginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Drawing numbering";

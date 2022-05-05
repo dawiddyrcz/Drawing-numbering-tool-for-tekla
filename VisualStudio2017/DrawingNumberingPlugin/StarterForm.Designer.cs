@@ -41,7 +41,7 @@
             this.start_button.TabIndex = 0;
             this.start_button.Text = "Run Drawing Numbering Tool";
             this.start_button.UseVisualStyleBackColor = true;
-            this.start_button.Click += new System.EventHandler(this.Start_button_Click);
+            this.start_button.Click += new System.EventHandler(this.button1_Click);
             // 
             // StarterForm
             // 

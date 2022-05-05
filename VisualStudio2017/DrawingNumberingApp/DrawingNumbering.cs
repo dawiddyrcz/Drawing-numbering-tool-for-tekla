@@ -129,6 +129,7 @@ namespace DrawingNumberingPlugin
                         if (progress.Canceled()) break;
 
                         var currentDrawing = selectedDrawings.Current as Tekla.Structures.Drawing.Drawing;
+                        currentDrawing.Select();
                         bool modified = false;
                         var currentNumberString = GetCurrentNumberWithPrefixAndPostFix(data._Prefix, data._Postfix, currentNumber);
 

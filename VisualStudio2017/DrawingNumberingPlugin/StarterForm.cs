@@ -7,17 +7,19 @@ namespace DrawingNumberingPlugin
     public partial class StarterForm : PluginFormBase
     {
         private readonly string _appName = "DrawingNumberingApp.exe";
-        private readonly string _tsepDirName = "DrawingNumberingPlugin";
+        private readonly string _tsepDirName = "DDBIMDrawingNumberingTool";
         private readonly string _appDirectory = System.IO.Path.Combine("applications", "Tekla", "DrawingNumberingApp");
         public StarterForm()
         {
+            this.Shown += DummyForm_Shown;
             InitializeComponent();
         }
 
-        private void Start_button_Click(object sender, EventArgs e)
+        private void DummyForm_Shown(object sender, EventArgs e)
         {
             try
             {
+                System.Threading.Thread.Sleep(50);
                 try
                 {
                     CloseAllProcesses();
@@ -35,16 +37,19 @@ namespace DrawingNumberingPlugin
                 System.Windows.Forms.MessageBox.Show(ex.ToString());
             }
 
-            Invoke(new Action(() =>
+            System.Threading.Tasks.Task.Run(() =>
             {
-                try
+                Invoke(new Action(() =>
                 {
-                    System.Threading.Thread.Sleep(50);
-                    this.Close();
+                    try
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        this.Close();
+                    }
+                    catch { }
                 }
-                catch { }
-            }
-            ));
+                    ));
+            });
         }
 
         private string GetApplicationExePath()
@@ -88,6 +93,11 @@ namespace DrawingNumberingPlugin
                     process.Kill();
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DummyForm_Shown(this, new EventArgs());
         }
     }
 }
