@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TEP Version="1.0">
+
+	<Product Id="DDBIMDrawingNumberingTool" UpgradeCode="71687CF2-EF12-4BD5-91F5-BA2CF1D3D667" Version="2.0" Language="1033"
+		Name="DDBIM Drawing Numbering Tool" Manufacturer="DDBIM Dawid Dyrcz"  Description= "Speed up numbering drawing titles"
+		IconPath="%TEPDEFINITIONFILEFOLDER%\Icon.png">
+		<TeklaVersions>
+			<TeklaVersion Name="2099.1"/>
+			<MinTeklaVersion Name="2016.0"/>
+			<MaxTeklaVersion Name="2099.1"/>
+		</TeklaVersions>
+	</Product>
+	 
+	<SourcePathVariables>
+		<SourcePathVariable Id="TepOutputFolder" Value="%TEPDEFINITIONFILEFOLDER%\output" Comment="This provides the location where the package builder is to save the package."/>
+    <SourcePathVariable Id="BinariesFolder" Value="%TEPDEFINITIONFILEFOLDER%\bin\Debug"/>
+		<SourcePathVariable Id="StandardFileFolder" Value="%TEPDEFINITIONFILEFOLDER%\Settings\"/>
+		<SourcePathVariable Id="MessagesFolder" Value="%TEPDEFINITIONFILEFOLDER%"/>
+		<SourcePathVariable Id="BitmapsFolder" Value="%TEPDEFINITIONFILEFOLDER%\Drawings\"/>
+    </SourcePathVariables>
+
+	<TargetPathVariables>
+		<PathVariable Id="ModelPluginsDirectory" Value="%ENVDIR%\extensions\plugins\tekla\model\"/>
+		<PathVariable Id="ModelApplicationsDirectory" Value="%ENVDIR%\extensions\applications\tekla\model\"/>
+		<PathVariable Id="ExtensionsDir" Value="%commonEnvFolder%\extensions\"/>
+		<PathVariable Id="BinariesTargetDirectory" Value="%ExtensionsDir%\DDBIMDrawingNumberingTool\"/><!-- Jak zmienisz nazwę folderu to też zmień ścieżkę licenncji w Dialog.Show-->
+		<PathVariable Id="BitmapsDirectory" Value="%ENVDIR%\..\bitmaps\"/>
+		<PathVariable Id="AttributeFileDirectory" Value="%commonEnvFolder%\system\"/>
+		<PathVariable Id="CommonMacroDirectory" Value="%commonEnvFolder%\macros\modeling\"/>
+	</TargetPathVariables>
+
+	<Component Id="TheExtensionComponent" Guid="5E5A0F76-6A79-4EAA-B365-FAAA5675206F">
+		<File Id="Icon" Source="%BitmapsFolder%\et_element_Drawing Numbering Tool 2.bmp" Target="%BitmapsDirectory%"/>
+		<File Id="DrawingNumberingPlugin.dll" Source="%BinariesFolder%\DrawingNumberingPlugin.dll" Target="%BinariesTargetDirectory%"/>
+		<File Id="DrawingNumberingApp.exe" Source="%BinariesFolder%\DrawingNumberingApp.exe" Target="%BinariesTargetDirectory%"/>
+		<File Id="standard.DrawingNumberingPlugin.MainForm.xml" Source="%StandardFileFolder%\standard.DrawingNumberingPlugin.MainForm.xml" Target="%AttributeFileDirectory%"/>
+		<File Id="DrawingNuberingTool_ComponentCatalog.ac.xml" Source="%StandardFileFolder%\DrawingNuberingTool_ComponentCatalog.ac.xml" Target="%AttributeFileDirectory%"/>
+
+	</Component>
+
+	<Feature Id="TheExtensionFeature" Title="ExtensionFeature">
+		<ComponentRef ReferenceId="TheExtensionComponent" />
+	</Feature>
+
+ </TEP>

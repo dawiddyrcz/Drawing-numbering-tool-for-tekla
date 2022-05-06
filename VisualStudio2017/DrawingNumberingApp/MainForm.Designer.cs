@@ -46,9 +46,10 @@ namespace DrawingNumberingPlugin
             this.writeTo_label = new System.Windows.Forms.Label();
             this.title_comboBox = new System.Windows.Forms.ComboBox();
             this.onlyPrefix_checkBox = new System.Windows.Forms.CheckBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.ddbim_linkLabel = new System.Windows.Forms.LinkLabel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.progress_label = new System.Windows.Forms.Label();
+            this.youtube_linkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.startNumber_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digits_numericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -274,19 +275,19 @@ namespace DrawingNumberingPlugin
             this.onlyPrefix_checkBox.UseVisualStyleBackColor = true;
             this.onlyPrefix_checkBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.onlyPrefix_checkBox_MouseUp);
             // 
-            // linkLabel1
+            // ddbim_linkLabel
             // 
-            this.structuresExtender.SetAttributeName(this.linkLabel1, null);
-            this.structuresExtender.SetAttributeTypeName(this.linkLabel1, null);
-            this.linkLabel1.AutoSize = true;
-            this.structuresExtender.SetBindPropertyName(this.linkLabel1, null);
-            this.linkLabel1.Location = new System.Drawing.Point(265, 337);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(100, 15);
-            this.linkLabel1.TabIndex = 14;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://ddbim.pl/";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.structuresExtender.SetAttributeName(this.ddbim_linkLabel, null);
+            this.structuresExtender.SetAttributeTypeName(this.ddbim_linkLabel, null);
+            this.ddbim_linkLabel.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.ddbim_linkLabel, null);
+            this.ddbim_linkLabel.Location = new System.Drawing.Point(302, 349);
+            this.ddbim_linkLabel.Name = "ddbim_linkLabel";
+            this.ddbim_linkLabel.Size = new System.Drawing.Size(100, 15);
+            this.ddbim_linkLabel.TabIndex = 14;
+            this.ddbim_linkLabel.TabStop = true;
+            this.ddbim_linkLabel.Text = "https://ddbim.pl/";
+            this.ddbim_linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ddbim_linklabel_LinkClicked);
             // 
             // progressBar1
             // 
@@ -295,7 +296,7 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetAttributeName(this.progressBar1, null);
             this.structuresExtender.SetAttributeTypeName(this.progressBar1, null);
             this.structuresExtender.SetBindPropertyName(this.progressBar1, null);
-            this.progressBar1.Location = new System.Drawing.Point(3, 337);
+            this.progressBar1.Location = new System.Drawing.Point(8, 330);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(536, 14);
             this.progressBar1.TabIndex = 15;
@@ -307,11 +308,25 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetAttributeTypeName(this.progress_label, null);
             this.progress_label.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.progress_label, null);
-            this.progress_label.Location = new System.Drawing.Point(5, 316);
+            this.progress_label.Location = new System.Drawing.Point(5, 309);
             this.progress_label.Name = "progress_label";
             this.progress_label.Size = new System.Drawing.Size(82, 15);
             this.progress_label.TabIndex = 16;
             this.progress_label.Text = "progress_label";
+            // 
+            // youtube_linkLabel
+            // 
+            this.structuresExtender.SetAttributeName(this.youtube_linkLabel, null);
+            this.structuresExtender.SetAttributeTypeName(this.youtube_linkLabel, null);
+            this.youtube_linkLabel.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.youtube_linkLabel, null);
+            this.youtube_linkLabel.Location = new System.Drawing.Point(244, 369);
+            this.youtube_linkLabel.Name = "youtube_linkLabel";
+            this.youtube_linkLabel.Size = new System.Drawing.Size(158, 15);
+            this.youtube_linkLabel.TabIndex = 17;
+            this.youtube_linkLabel.TabStop = true;
+            this.youtube_linkLabel.Text = "https://youtube.com/ddbim";
+            this.youtube_linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.youtube_linkLabel_LinkClicked);
             // 
             // MainForm
             // 
@@ -322,9 +337,10 @@ namespace DrawingNumberingPlugin
             this.BackColor = System.Drawing.Color.White;
             this.structuresExtender.SetBindPropertyName(this, null);
             this.ClientSize = new System.Drawing.Size(544, 391);
+            this.Controls.Add(this.youtube_linkLabel);
+            this.Controls.Add(this.ddbim_linkLabel);
             this.Controls.Add(this.progress_label);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.onlyPrefix_checkBox);
             this.Controls.Add(this.title_comboBox);
             this.Controls.Add(this.writeTo_label);
@@ -370,8 +386,9 @@ namespace DrawingNumberingPlugin
         private System.Windows.Forms.Label writeTo_label;
         private System.Windows.Forms.ComboBox title_comboBox;
         private System.Windows.Forms.CheckBox onlyPrefix_checkBox;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel ddbim_linkLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label progress_label;
+        private System.Windows.Forms.LinkLabel youtube_linkLabel;
     }
 }

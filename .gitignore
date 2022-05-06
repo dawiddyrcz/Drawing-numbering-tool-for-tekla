@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /VisualStudio2017/ObjDir/2019/DrawingNumberingApp
+/VisualStudio2017/DrawingNumberingPlugin/output

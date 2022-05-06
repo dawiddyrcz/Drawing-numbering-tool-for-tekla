@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-  <prefix></prefix>
+  <prefix>AH10-W4BP1-</prefix>
   <postfix></postfix>
   <startNumber>0</startNumber>
-  <digits>0</digits>
-  <title>0</title>
+  <digits>3</digits>
+  <title>3</title>
   <onlyPrefix>0</onlyPrefix>
 </config>

@@ -253,11 +253,20 @@ namespace DrawingNumberingPlugin
             EnableDisableControls();
         }
 
-        private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        private void ddbim_linklabel_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                System.Diagnostics.Process.Start(linkLabel1.Text);
+                System.Diagnostics.Process.Start("https://www.ddbim.pl/?utm_source=drawing-numbering-tool");
+            }
+            catch { }
+        }
+
+        private void youtube_linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/channel/UC5wK6PzSDqxXxv5Vc0CppSg?sub_confirmation=1");
             }
             catch { }
         }
