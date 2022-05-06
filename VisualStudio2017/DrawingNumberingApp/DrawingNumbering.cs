@@ -105,7 +105,7 @@ namespace DrawingNumberingPlugin
             Progress?.Invoke(count, max, message);
         }
 
-        public bool Run(DoWorkEventArgs e)
+        public bool Run(BackgroundWorker worker)
         {
             int succesfulModified = 0;
             var dh = new Tekla.Structures.Drawing.DrawingHandler();
@@ -140,7 +140,7 @@ namespace DrawingNumberingPlugin
 
                     while (selectedDrawings.MoveNext())
                     {
-                        if(e.Cancel ) break;
+                        if(worker.CancellationPending) break;
 
                         var currentDrawing = selectedDrawings.Current as Tekla.Structures.Drawing.Drawing;
                         currentDrawing.Select();
@@ -189,7 +189,7 @@ namespace DrawingNumberingPlugin
                                         modified = currentDrawing.SetUserProperty(udaName, currentNumberString);
                                     }
                                 }
-                                catch (Exception) { }
+                                catch { }
                                 break;
                         }
 

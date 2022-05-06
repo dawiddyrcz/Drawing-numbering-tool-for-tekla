@@ -69,7 +69,7 @@ namespace DrawingNumberingPlugin
                     }));
                 };
 
-                drawingNumbering.Run(e);
+                drawingNumbering.Run(this.backgroundWorker);
             }
             catch (Exception ex) { HandleException(ex); }
         }
