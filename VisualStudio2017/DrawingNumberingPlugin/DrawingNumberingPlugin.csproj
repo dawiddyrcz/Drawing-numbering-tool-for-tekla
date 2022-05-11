@@ -24,15 +24,6 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,34 +67,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrawingNumberingPlugin_Code.cs" />
-    <Compile Include="DrawingNumberingPlugin_Form.cs">
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StarterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DrawingNumberingPlugin_Form.Designer.cs">
-      <DependentUpon>DrawingNumberingPlugin_Form.cs</DependentUpon>
+    <Compile Include="StarterForm.Designer.cs">
+      <DependentUpon>StarterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UDAHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DrawingNumberingPlugin_Form.resx">
-      <DependentUpon>DrawingNumberingPlugin_Form.cs</DependentUpon>
+    <EmbeddedResource Include="StarterForm.resx">
+      <DependentUpon>StarterForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Drawings\et_element_Drawing Numbering Tool.bmp">
+    <Content Include="Drawings\et_element_Drawing Numbering Tool 2.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Examples\standard.DrawingNumberingPlugin.DrawingNumberingPluginForm.xml">
+    <Content Include="Settings\standard.DrawingNumberingPlugin.MainForm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="License.txt" />
-    <Content Include="TSGroup\DrawingNumberingToolvODS_ComponentCatalog.ac.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="TsepDefinition.xml" />
+    <Content Include="Settings\DrawingNuberingTool_ComponentCatalog.ac.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TSGroup\DrawingNumberingToolvWarehouse_ComponentCatalog.ac.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SignOutput.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

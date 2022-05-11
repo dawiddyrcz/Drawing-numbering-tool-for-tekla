@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DrawingNumberingPlugin")]
-[assembly: AssemblyDescription("Tekla Structures plugin. Drawing numbering tool")]
+[assembly: AssemblyTitle("DrawingNumberingApp")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Dawid Dyrcz")]
-[assembly: AssemblyProduct("DrawingNumberingPlugin")]
-[assembly: AssemblyCopyright("Copyright © Dawid Dyrcz 2018")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("DrawingNumberingApp")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("97196bc5-5c5b-4476-a474-271f5c143f78")]
+[assembly: Guid("41bd1405-5cc6-4005-9372-2c38ab01aa1c")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,18 +4,74 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Forms;
 using Tekla.Structures.Dialog;
 
 namespace DrawingNumberingPlugin
 {
-    public partial class DrawingNumberingPluginForm : PluginFormBase
+    public partial class MainForm : ApplicationFormBase
     {
-        public DrawingNumberingPluginForm()
+        private BackgroundWorker backgroundWorker = new BackgroundWorker();
+        public MainForm()
         {
             InitializeComponent();
             GenerateExampleNumbers();
             EnableDisableControls();
             FillTitleCombobox();
+
+            this.InitializeForm();
+            backgroundWorker.WorkerSupportsCancellation = true;
+            backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+            backgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
+
+            this.Shown += DrawingNumberingPluginForm_Shown;
+            progress_label.Text = "Ready";
+        }
+
+        private void DrawingNumberingPluginForm_Shown(object sender, EventArgs e)
+        {
+            var model = new Tekla.Structures.Model.Model();
+            if (model.GetConnectionStatus())
+            {
+                var events = new Tekla.Structures.Model.Events();
+                events.TeklaStructuresExit += Events_TeklaStructuresExit;
+                events.Register();
+            }
+        }
+
+        private void Events_TeklaStructuresExit()
+        {
+            Application.Exit();
+        }
+
+        private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+           
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            workInProgress = false;
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                var drawingNumbering = new DrawingNumbering(data);
+                drawingNumbering.Progress += (count, max, message) =>
+                {
+                    Invoke(new Action(() => 
+                    { 
+                        progress_label.Text = message;
+                        progressBar1.Value = (int) (100.0 * count / max);
+                    }));
+                };
+
+                drawingNumbering.Run(this.backgroundWorker);
+            }
+            catch (Exception ex) { HandleException(ex); }
         }
 
         private void FillTitleCombobox()
@@ -43,20 +99,27 @@ namespace DrawingNumberingPlugin
 
         private void GenerateExampleNumbers()
         {
-            if (int.TryParse(this.startNumber_numericUpDown.Text, out int startNumber))
+            try
             {
-                if (startNumber >= 0)
+                if (int.TryParse(this.startNumber_numericUpDown.Text, out int startNumber))
                 {
-                    string exampleText = "";
-
-                    for (int i = startNumber; i < startNumber + 7; i++)
+                    if (startNumber >= 0)
                     {
-                        string newLine = GetCurrentNumberWithPrefixAndPostFix(this.prefix_textBox.Text, this.postfix_textBox.Text, i);
-                        exampleText = exampleText + newLine + "\n";
-                    }
+                        string exampleText = "";
 
-                    this.example_label.Text = exampleText; 
+                        for (int i = startNumber; i < startNumber + 7; i++)
+                        {
+                            string newLine = GetCurrentNumberWithPrefixAndPostFix(this.prefix_textBox.Text, this.postfix_textBox.Text, i);
+                            exampleText = exampleText + newLine + "\n";
+                        }
+
+                        this.example_label.Text = exampleText;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
             }
         }
 
@@ -119,13 +182,37 @@ namespace DrawingNumberingPlugin
 
         private void createApplyCancel1_CancelClicked(object sender, EventArgs e)
         {
-            this.Close();
+            if (workInProgress)
+                backgroundWorker.CancelAsync();
         }
 
+        bool workInProgress = false;
+        private DrawingNumberingPlugin_StructuresData data;
         private void createApplyCancel1_CreateClicked(object sender, EventArgs e)
         {
-            this.Apply();
-            this.Create();
+            try
+            {
+                this.Apply();
+                workInProgress = true;
+                data = new DrawingNumberingPlugin_StructuresData();
+                data._Prefix = this.prefix_textBox.Text;
+                data._StartNumber = (int)this.startNumber_numericUpDown.Value;
+                data._Digits = (int)this.digits_numericUpDown.Value;
+                data._Postfix = this.postfix_textBox.Text;
+                data._Title = this.title_comboBox.SelectedIndex;
+                data._OnlyPrefix = this.onlyPrefix_checkBox.Checked ? 1 : 0;
+                data.CorrectValues();
+                backgroundWorker.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+            }
+        }
+
+        private void HandleException(Exception ex)
+        {
+            System.Windows.Forms.MessageBox.Show(ex.ToString());
         }
 
         private void startNumber_numericUpDown_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -164,6 +251,24 @@ namespace DrawingNumberingPlugin
         {
             GenerateExampleNumbers();
             EnableDisableControls();
+        }
+
+        private void ddbim_linklabel_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://www.ddbim.pl/?utm_source=drawing-numbering-tool");
+            }
+            catch { }
+        }
+
+        private void youtube_linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/channel/UC5wK6PzSDqxXxv5Vc0CppSg?sub_confirmation=1");
+            }
+            catch { }
         }
     }
 }

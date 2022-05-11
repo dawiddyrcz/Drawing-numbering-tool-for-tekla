@@ -4,8 +4,8 @@
 <CatalogModel Version="1.0">
   <ComponentCatalogItems>
     <CatalogPluginComponentItem>
-      <DisplayName>Drawing Numbering Tool</DisplayName>
-      <ComponentId>Drawing Numbering Tool</ComponentId>
+      <DisplayName>Drawing Numbering Tool 2</DisplayName>
+      <ComponentId>Drawing Numbering Tool 2</ComponentId>
     </CatalogPluginComponentItem>
   </ComponentCatalogItems>
   <ComponentCatalogGroups>
@@ -14,17 +14,17 @@
       <GroupName>albl_Root_fixed_group_name</GroupName>
       <GroupChildren>
         <ComponentCatalogGroupPlaceholder>
-          <GroupIdString>7b5169b2-941d-4abd-b655-c41b46927a2b</GroupIdString>
-          <GroupName>Drawing Tools</GroupName>
+          <GroupIdString>3d579d71-45a7-4705-8dc4-19f0acd72201</GroupIdString>
+          <GroupName>DDBIM Tools - www.ddbim.pl</GroupName>
         </ComponentCatalogGroupPlaceholder>
       </GroupChildren>
     </ComponentCatalogGroup>
     <ComponentCatalogGroup>
-      <GroupIdString>7b5169b2-941d-4abd-b655-c41b46927a2b</GroupIdString>
-      <GroupName>Drawing Tools</GroupName>
+      <GroupIdString>3d579d71-45a7-4705-8dc4-19f0acd72201</GroupIdString>
+      <GroupName>DDBIM Tools - www.ddbim.pl</GroupName>
       <GroupChildren>
         <ComponentCatalogItemPlaceholder>
-          <ItemIdString>CatalogPluginComponentItem?Drawing Numbering Tool</ItemIdString>
+          <ItemIdString>CatalogPluginComponentItem?Drawing Numbering Tool 2</ItemIdString>
         </ComponentCatalogItemPlaceholder>
       </GroupChildren>
     </ComponentCatalogGroup>
