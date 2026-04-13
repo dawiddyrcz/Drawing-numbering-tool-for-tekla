@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DrawingNumberingPlugin")]
-[assembly: AssemblyDescription("Tekla Structures plugin. Drawing numbering tool")]
+[assembly: AssemblyTitle("DrawingNumberingPlugin_InstallerClass")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Dawid Dyrcz")]
-[assembly: AssemblyProduct("DrawingNumberingPlugin")]
-[assembly: AssemblyCopyright("Copyright © Dawid Dyrcz 2018")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("DrawingNumberingPlugin_InstallerClass")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("97196bc5-5c5b-4476-a474-271f5c143f78")]
+[assembly: Guid("887ceb28-3cb9-4c4f-9be1-ae453356662e")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,6 +31,6 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.3.0")]
-[assembly: AssemblyFileVersion("2.3.0")]
+ [assembly: AssemblyVersion("2.3.*")]
+//[assembly: AssemblyVersion("1.0.0.0")]
+//[assembly: AssemblyFileVersion("1.0.0.0")]

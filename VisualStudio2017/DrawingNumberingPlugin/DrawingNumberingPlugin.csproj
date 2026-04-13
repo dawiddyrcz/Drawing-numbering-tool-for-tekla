@@ -8,11 +8,13 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DrawingNumberingPlugin</RootNamespace>
-    <AssemblyName>DrawingNumberingPlugin</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AssemblyName>DrawingNumberingPlugin2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,34 +36,44 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tekla.Structures, Version=2018.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\00_References\References_2018\Tekla.Structures.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Tekla.Structures.Catalogs, Version=2018.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Analysis, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.Analysis.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\00_References\References_2018\Tekla.Structures.Catalogs.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Tekla.Structures.Dialog, Version=2018.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Catalogs, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.Catalogs.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\00_References\References_2018\Tekla.Structures.Dialog.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Tekla.Structures.Drawing, Version=2018.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Datatype, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.Datatype.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\00_References\References_2018\Tekla.Structures.Drawing.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Tekla.Structures.Model, Version=2018.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Dialog, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.Dialog.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\00_References\References_2018\Tekla.Structures.Model.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Tekla.Structures.Plugins, Version=2018.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Drawing, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.Drawing.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\00_References\References_2018\Tekla.Structures.Plugins.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Tekla.Structures.Model, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.Model.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Tekla.Structures.Plugins, Version=20.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <HintPath>..\DrawingNumberingApp\References\Tekla.Structures.Plugins.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -71,7 +83,7 @@
     <Compile Include="StarterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StarterForm.Designer.cs">
+    <Compile Include="StarterForm.designer.cs">
       <DependentUpon>StarterForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -84,17 +96,20 @@
     <Content Include="Drawings\et_element_Drawing Numbering Tool 2.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Settings\standard.DrawingNumberingPlugin.MainForm.xml">
+    <Content Include="Settings\standard.DrawingNumberingPlugin2.MainForm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="License.txt" />
-    <Content Include="TsepDefinition.xml" />
+    <Content Include="License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Settings\DrawingNuberingTool_ComponentCatalog.ac.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SignOutput.bat" />
+    <None Include="License.rtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DrawingNumberingPlugin
+namespace DrawingNumberingPlugin2
 {
     internal static class Program
     {

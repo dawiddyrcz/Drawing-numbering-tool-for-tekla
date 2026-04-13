@@ -7,11 +7,12 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Tekla.Structures.Dialog;
 
-namespace DrawingNumberingPlugin
+namespace DrawingNumberingPlugin2
 {
     public partial class MainForm : ApplicationFormBase
     {
         private BackgroundWorker backgroundWorker = new BackgroundWorker();
+
         public MainForm()
         {
             InitializeComponent();
@@ -27,6 +28,9 @@ namespace DrawingNumberingPlugin
 
             this.Shown += DrawingNumberingPluginForm_Shown;
             progress_label.Text = "Ready";
+
+            var programVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            this.Text = $"{this.Text} - {programVersion.Major}.{programVersion.Minor}";
         }
 
         private void DrawingNumberingPluginForm_Shown(object sender, EventArgs e)
@@ -40,6 +44,12 @@ namespace DrawingNumberingPlugin
             }
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Exit();
+        }
+
         private void Events_TeklaStructuresExit()
         {
             Application.Exit();
@@ -47,7 +57,7 @@ namespace DrawingNumberingPlugin
 
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-           
+
         }
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -62,10 +72,10 @@ namespace DrawingNumberingPlugin
                 var drawingNumbering = new DrawingNumbering(data);
                 drawingNumbering.Progress += (count, max, message) =>
                 {
-                    Invoke(new Action(() => 
-                    { 
+                    Invoke(new Action(() =>
+                    {
                         progress_label.Text = message;
-                        progressBar1.Value = (int) (100.0 * count / max);
+                        progressBar1.Value = (int)(100.0 * count / max);
                     }));
                 };
 
@@ -137,7 +147,7 @@ namespace DrawingNumberingPlugin
                 {
                     //Check number of digits in currentnumber and corrects var digits
                     int.TryParse(Math.Max(digits, Math.Floor(Math.Log10(currentNumber) + 1)).ToString(), out digits);
-                    
+
                     string formatString = "";
 
                     for (int j = 0; j < digits; j++)
@@ -253,22 +263,5 @@ namespace DrawingNumberingPlugin
             EnableDisableControls();
         }
 
-        private void ddbim_linklabel_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("https://www.ddbim.pl/?utm_source=drawing-numbering-tool");
-            }
-            catch { }
-        }
-
-        private void youtube_linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/channel/UC5wK6PzSDqxXxv5Vc0CppSg?sub_confirmation=1");
-            }
-            catch { }
-        }
     }
 }

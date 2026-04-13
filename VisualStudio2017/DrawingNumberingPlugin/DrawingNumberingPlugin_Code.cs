@@ -6,7 +6,7 @@ using System;
 using Tekla.Structures.Plugins;
 using System.Collections.Generic;
 
-namespace DrawingNumberingPlugin
+namespace DrawingNumberingPlugin2
 {
     public class DrawingNumberingPlugin_StructuresData
     {
@@ -15,7 +15,7 @@ namespace DrawingNumberingPlugin
     }
 
     [Plugin("Drawing Numbering Tool 2")] 
-    [PluginUserInterface("DrawingNumberingPlugin.StarterForm")]
+    [PluginUserInterface(nameof(DrawingNumberingPlugin2)+"."+nameof(StarterForm))]
     [InputObjectDependency(PluginBase.InputObjectDependency.NOT_DEPENDENT)]
    
     public class DrawingNumberingPlugin : PluginBase

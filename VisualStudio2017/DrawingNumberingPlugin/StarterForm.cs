@@ -1,55 +1,59 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
-using Tekla.Structures.Dialog;
+using System.Linq;
 
-namespace DrawingNumberingPlugin
+namespace DrawingNumberingPlugin2
 {
-    public partial class StarterForm : PluginFormBase
+    public partial class StarterForm :  Tekla.Structures.Dialog.PluginFormBase
     {
         private readonly string _appName = "DrawingNumberingApp.exe";
         private readonly string _tsepDirName = "DDBIMDrawingNumberingTool";
-        private readonly string _appDirectory = System.IO.Path.Combine("applications", "Tekla", "DrawingNumberingApp");
+        private readonly string _appDirectory = Path.Combine("plugins", "Tekla", "Drawings", "DrawingNumberingApp");
+
+        private static readonly BackgroundWorker backgroundWorker = new BackgroundWorker();
         public StarterForm()
         {
-            this.Shown += DummyForm_Shown;
             InitializeComponent();
+            this.Shown += DummyForm_Shown;
+
+            backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+            backgroundWorker.DoWork += BackgroundWorker_DoWork;
         }
 
-        private void DummyForm_Shown(object sender, EventArgs e)
+        protected override void OnClosing(CancelEventArgs e)
         {
-            try
-            {
-                System.Threading.Thread.Sleep(50);
-                try
-                {
-                    CloseAllProcesses();
-                }
-                catch { }
+            backgroundWorker.RunWorkerCompleted -= BackgroundWorker_RunWorkerCompleted;
+            backgroundWorker.DoWork -= BackgroundWorker_DoWork;
 
+            base.OnClosing(e);
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(50);
+            var processName = Path.GetFileNameWithoutExtension(_appName);
+            var processes = System.Diagnostics.Process.GetProcessesByName(processName);
+
+            if (processes.Length == 0)
+            {
                 var appFullPath = GetApplicationExePath();
                 System.Diagnostics.Process.Start(appFullPath);
 
                 Tekla.Structures.Model.Operations.Operation.DisplayPrompt(
                     DateTime.Now.ToString("HH:mm:ss.fff") + " Trying to start application: " + appFullPath);
             }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
+        }
 
-            System.Threading.Tasks.Task.Run(() =>
-            {
-                Invoke(new Action(() =>
-                {
-                    try
-                    {
-                        System.Threading.Thread.Sleep(1000);
-                        this.Close();
-                    }
-                    catch { }
-                }
-                    ));
-            });
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DummyForm_Shown(object sender, EventArgs e)
+        {
+            if (backgroundWorker.IsBusy == false)
+                backgroundWorker.RunWorkerAsync();
         }
 
         private string GetApplicationExePath()
@@ -64,18 +68,20 @@ namespace DrawingNumberingPlugin
 
             if (File.Exists(appFileFullPath)) return appFileFullPath;
 
-            var teklaBinDir = Tekla.Structures.Dialog.StructuresInstallation.BinFolder;
+            var teklaBinDir = System.Environment.GetEnvironmentVariable("XSBIN");
             if (!string.IsNullOrWhiteSpace(teklaBinDir))
                 appFileFullPath = Path.Combine(teklaBinDir, _appDirectory, _appName);
 
-            if (File.Exists(appFileFullPath)) return appFileFullPath;
+            if (File.Exists(appFileFullPath)) 
+                return appFileFullPath;
 
 
             var assemblyFile = System.Reflection.Assembly.GetExecutingAssembly().Location; // sometimes returns string empty
             if (!string.IsNullOrWhiteSpace(assemblyFile))
                 appFileFullPath = Path.Combine(Path.GetDirectoryName(assemblyFile), _appName);
 
-            if (File.Exists(appFileFullPath)) return appFileFullPath;
+            if (File.Exists(appFileFullPath)) 
+                return appFileFullPath;
 
             throw new Exception($"Could not find {_appName} file");
         }

@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TEP Version="1.0">
 
-	<Product Id="DDBIMDrawingNumberingTool" UpgradeCode="71687CF2-EF12-4BD5-91F5-BA2CF1D3D667" Version="2.0" Language="1033"
+	<Product Id="DDBIMDrawingNumberingTool" UpgradeCode="71687CF2-EF12-4BD5-91F5-BA2CF1D3D667" Version="1.0" Language="1033"
 		Name="DDBIM Drawing Numbering Tool" Manufacturer="DDBIM Dawid Dyrcz"  Description= "Speed up numbering drawing titles"
-		IconPath="%TEPDEFINITIONFILEFOLDER%\Icon.png">
+		IconPath="%TEPDEFINITIONFILEFOLDER%\Icon.png" Type="Extension">
 		<TeklaVersions>
-			<TeklaVersion Name="2099.1"/>
+			<TeklaVersion Name="2016.0"/>
 			<MinTeklaVersion Name="2016.0"/>
-			<MaxTeklaVersion Name="2099.1"/>
+			<MaxTeklaVersion Name="2024.0"/>
 		</TeklaVersions>
 	</Product>
 	 
 	<SourcePathVariables>
 		<SourcePathVariable Id="TepOutputFolder" Value="%TEPDEFINITIONFILEFOLDER%\output" Comment="This provides the location where the package builder is to save the package."/>
-    <SourcePathVariable Id="BinariesFolder" Value="%TEPDEFINITIONFILEFOLDER%\bin\Debug"/>
-		<SourcePathVariable Id="StandardFileFolder" Value="%TEPDEFINITIONFILEFOLDER%\Settings\"/>
-		<SourcePathVariable Id="MessagesFolder" Value="%TEPDEFINITIONFILEFOLDER%"/>
-		<SourcePathVariable Id="BitmapsFolder" Value="%TEPDEFINITIONFILEFOLDER%\Drawings\"/>
+    <SourcePathVariable Id="BinariesFolder" Value="%TEPDEFINITIONFILEFOLDER%\DrawingNumberingPlugin\bin\Debug"/>
+		<SourcePathVariable Id="StandardFileFolder" Value="%TEPDEFINITIONFILEFOLDER%\DrawingNumberingPlugin\Settings\"/>
+		<SourcePathVariable Id="MessagesFolder" Value="%TEPDEFINITIONFILEFOLDER%\DrawingNumberingPlugin"/>
+		<SourcePathVariable Id="BitmapsFolder" Value="%TEPDEFINITIONFILEFOLDER%\DrawingNumberingPlugin\Drawings\"/>
     </SourcePathVariables>
 
 	<TargetPathVariables>
@@ -31,9 +31,9 @@
 
 	<Component Id="TheExtensionComponent" Guid="5E5A0F76-6A79-4EAA-B365-FAAA5675206F">
 		<File Id="Icon" Source="%BitmapsFolder%\et_element_Drawing Numbering Tool 2.bmp" Target="%BitmapsDirectory%"/>
-		<File Id="DrawingNumberingPlugin.dll" Source="%BinariesFolder%\DrawingNumberingPlugin.dll" Target="%BinariesTargetDirectory%"/>
+		<File Id="DrawingNumberingPlugin2.dll" Source="%BinariesFolder%\DrawingNumberingPlugin2.dll" Target="%BinariesTargetDirectory%"/>
 		<File Id="DrawingNumberingApp.exe" Source="%BinariesFolder%\DrawingNumberingApp.exe" Target="%BinariesTargetDirectory%"/>
-		<File Id="standard.DrawingNumberingPlugin.MainForm.xml" Source="%StandardFileFolder%\standard.DrawingNumberingPlugin.MainForm.xml" Target="%AttributeFileDirectory%"/>
+		<File Id="standard.DrawingNumberingPlugin2.MainForm.xml" Source="%StandardFileFolder%\standard.DrawingNumberingPlugin2.MainForm.xml" Target="%AttributeFileDirectory%"/>
 		<File Id="DrawingNuberingTool_ComponentCatalog.ac.xml" Source="%StandardFileFolder%\DrawingNuberingTool_ComponentCatalog.ac.xml" Target="%AttributeFileDirectory%"/>
 
 	</Component>

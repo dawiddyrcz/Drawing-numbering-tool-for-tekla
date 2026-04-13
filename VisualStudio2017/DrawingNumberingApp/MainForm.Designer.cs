@@ -1,7 +1,7 @@
 ﻿/* Copyright 2018 Dawid Dyrcz 
  * See License.txt file 
  */
-namespace DrawingNumberingPlugin
+namespace DrawingNumberingPlugin2
 {
     partial class MainForm
     {
@@ -37,7 +37,6 @@ namespace DrawingNumberingPlugin
             this.startNumber_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.digits_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.saveLoad1 = new Tekla.Structures.Dialog.UIControls.SaveLoad();
-            this.createApplyCancel1 = new Tekla.Structures.Dialog.UIControls.CreateApplyCancel();
             this.preifx_label = new System.Windows.Forms.Label();
             this.startNumber_label = new System.Windows.Forms.Label();
             this.postfix_label = new System.Windows.Forms.Label();
@@ -46,10 +45,10 @@ namespace DrawingNumberingPlugin
             this.writeTo_label = new System.Windows.Forms.Label();
             this.title_comboBox = new System.Windows.Forms.ComboBox();
             this.onlyPrefix_checkBox = new System.Windows.Forms.CheckBox();
-            this.ddbim_linkLabel = new System.Windows.Forms.LinkLabel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.progress_label = new System.Windows.Forms.Label();
-            this.youtube_linkLabel = new System.Windows.Forms.LinkLabel();
+            this.create_button = new System.Windows.Forms.Button();
+            this.cancel_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.startNumber_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digits_numericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -126,7 +125,7 @@ namespace DrawingNumberingPlugin
             0,
             0});
             this.digits_numericUpDown.Name = "digits_numericUpDown";
-            this.digits_numericUpDown.Size = new System.Drawing.Size(100, 23);
+            this.digits_numericUpDown.Size = new System.Drawing.Size(99, 23);
             this.digits_numericUpDown.TabIndex = 3;
             this.digits_numericUpDown.Value = new decimal(new int[] {
             3,
@@ -155,21 +154,6 @@ namespace DrawingNumberingPlugin
             this.saveLoad1.UserDefinedHelpFilePath = null;
             this.saveLoad1.AttributesLoaded += new System.EventHandler(this.saveLoad1_AttributesLoaded);
             // 
-            // createApplyCancel1
-            // 
-            this.structuresExtender.SetAttributeName(this.createApplyCancel1, null);
-            this.structuresExtender.SetAttributeTypeName(this.createApplyCancel1, null);
-            this.structuresExtender.SetBindPropertyName(this.createApplyCancel1, null);
-            this.createApplyCancel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.createApplyCancel1.Location = new System.Drawing.Point(0, 356);
-            this.createApplyCancel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.createApplyCancel1.Name = "createApplyCancel1";
-            this.createApplyCancel1.Size = new System.Drawing.Size(544, 35);
-            this.createApplyCancel1.TabIndex = 5;
-            this.createApplyCancel1.CreateClicked += new System.EventHandler(this.createApplyCancel1_CreateClicked);
-            this.createApplyCancel1.ApplyClicked += new System.EventHandler(this.createApplyCancel1_ApplyClicked);
-            this.createApplyCancel1.CancelClicked += new System.EventHandler(this.createApplyCancel1_CancelClicked);
-            // 
             // preifx_label
             // 
             this.structuresExtender.SetAttributeName(this.preifx_label, null);
@@ -179,7 +163,7 @@ namespace DrawingNumberingPlugin
             this.preifx_label.Location = new System.Drawing.Point(14, 65);
             this.preifx_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.preifx_label.Name = "preifx_label";
-            this.preifx_label.Size = new System.Drawing.Size(37, 15);
+            this.preifx_label.Size = new System.Drawing.Size(36, 15);
             this.preifx_label.TabIndex = 6;
             this.preifx_label.Text = "Prefix";
             // 
@@ -205,7 +189,7 @@ namespace DrawingNumberingPlugin
             this.postfix_label.Location = new System.Drawing.Point(14, 121);
             this.postfix_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.postfix_label.Name = "postfix_label";
-            this.postfix_label.Size = new System.Drawing.Size(43, 15);
+            this.postfix_label.Size = new System.Drawing.Size(42, 15);
             this.postfix_label.TabIndex = 8;
             this.postfix_label.Text = "Postfix";
             // 
@@ -228,10 +212,10 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetAttributeTypeName(this.example_label, null);
             this.example_label.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.example_label, null);
-            this.example_label.Location = new System.Drawing.Point(14, 187);
+            this.example_label.Location = new System.Drawing.Point(14, 181);
             this.example_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.example_label.Name = "example_label";
-            this.example_label.Size = new System.Drawing.Size(102, 15);
+            this.example_label.Size = new System.Drawing.Size(101, 15);
             this.example_label.TabIndex = 10;
             this.example_label.Text = "example numbers";
             // 
@@ -269,25 +253,11 @@ namespace DrawingNumberingPlugin
             this.onlyPrefix_checkBox.Location = new System.Drawing.Point(451, 150);
             this.onlyPrefix_checkBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.onlyPrefix_checkBox.Name = "onlyPrefix_checkBox";
-            this.onlyPrefix_checkBox.Size = new System.Drawing.Size(84, 19);
+            this.onlyPrefix_checkBox.Size = new System.Drawing.Size(83, 19);
             this.onlyPrefix_checkBox.TabIndex = 13;
             this.onlyPrefix_checkBox.Text = "Only prefix";
             this.onlyPrefix_checkBox.UseVisualStyleBackColor = true;
             this.onlyPrefix_checkBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.onlyPrefix_checkBox_MouseUp);
-            // 
-            // ddbim_linkLabel
-            // 
-            this.structuresExtender.SetAttributeName(this.ddbim_linkLabel, null);
-            this.structuresExtender.SetAttributeTypeName(this.ddbim_linkLabel, null);
-            this.ddbim_linkLabel.AutoSize = true;
-            this.structuresExtender.SetBindPropertyName(this.ddbim_linkLabel, null);
-            this.ddbim_linkLabel.Location = new System.Drawing.Point(302, 349);
-            this.ddbim_linkLabel.Name = "ddbim_linkLabel";
-            this.ddbim_linkLabel.Size = new System.Drawing.Size(100, 15);
-            this.ddbim_linkLabel.TabIndex = 14;
-            this.ddbim_linkLabel.TabStop = true;
-            this.ddbim_linkLabel.Text = "https://ddbim.pl/";
-            this.ddbim_linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ddbim_linklabel_LinkClicked);
             // 
             // progressBar1
             // 
@@ -298,7 +268,7 @@ namespace DrawingNumberingPlugin
             this.structuresExtender.SetBindPropertyName(this.progressBar1, null);
             this.progressBar1.Location = new System.Drawing.Point(8, 330);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(536, 14);
+            this.progressBar1.Size = new System.Drawing.Size(531, 14);
             this.progressBar1.TabIndex = 15;
             // 
             // progress_label
@@ -314,19 +284,31 @@ namespace DrawingNumberingPlugin
             this.progress_label.TabIndex = 16;
             this.progress_label.Text = "progress_label";
             // 
-            // youtube_linkLabel
+            // create_button
             // 
-            this.structuresExtender.SetAttributeName(this.youtube_linkLabel, null);
-            this.structuresExtender.SetAttributeTypeName(this.youtube_linkLabel, null);
-            this.youtube_linkLabel.AutoSize = true;
-            this.structuresExtender.SetBindPropertyName(this.youtube_linkLabel, null);
-            this.youtube_linkLabel.Location = new System.Drawing.Point(244, 369);
-            this.youtube_linkLabel.Name = "youtube_linkLabel";
-            this.youtube_linkLabel.Size = new System.Drawing.Size(158, 15);
-            this.youtube_linkLabel.TabIndex = 17;
-            this.youtube_linkLabel.TabStop = true;
-            this.youtube_linkLabel.Text = "https://youtube.com/ddbim";
-            this.youtube_linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.youtube_linkLabel_LinkClicked);
+            this.structuresExtender.SetAttributeName(this.create_button, null);
+            this.structuresExtender.SetAttributeTypeName(this.create_button, null);
+            this.structuresExtender.SetBindPropertyName(this.create_button, null);
+            this.create_button.Location = new System.Drawing.Point(8, 353);
+            this.create_button.Name = "create_button";
+            this.create_button.Size = new System.Drawing.Size(88, 31);
+            this.create_button.TabIndex = 19;
+            this.create_button.Text = "Start";
+            this.create_button.UseVisualStyleBackColor = true;
+            this.create_button.Click += new System.EventHandler(this.createApplyCancel1_CreateClicked);
+            // 
+            // cancel_button
+            // 
+            this.structuresExtender.SetAttributeName(this.cancel_button, null);
+            this.structuresExtender.SetAttributeTypeName(this.cancel_button, null);
+            this.structuresExtender.SetBindPropertyName(this.cancel_button, null);
+            this.cancel_button.Location = new System.Drawing.Point(451, 353);
+            this.cancel_button.Name = "cancel_button";
+            this.cancel_button.Size = new System.Drawing.Size(88, 31);
+            this.cancel_button.TabIndex = 21;
+            this.cancel_button.Text = "Cancel";
+            this.cancel_button.UseVisualStyleBackColor = true;
+            this.cancel_button.Click += new System.EventHandler(this.createApplyCancel1_CancelClicked);
             // 
             // MainForm
             // 
@@ -337,8 +319,8 @@ namespace DrawingNumberingPlugin
             this.BackColor = System.Drawing.Color.White;
             this.structuresExtender.SetBindPropertyName(this, null);
             this.ClientSize = new System.Drawing.Size(544, 391);
-            this.Controls.Add(this.youtube_linkLabel);
-            this.Controls.Add(this.ddbim_linkLabel);
+            this.Controls.Add(this.cancel_button);
+            this.Controls.Add(this.create_button);
             this.Controls.Add(this.progress_label);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.onlyPrefix_checkBox);
@@ -349,7 +331,6 @@ namespace DrawingNumberingPlugin
             this.Controls.Add(this.postfix_label);
             this.Controls.Add(this.startNumber_label);
             this.Controls.Add(this.preifx_label);
-            this.Controls.Add(this.createApplyCancel1);
             this.Controls.Add(this.saveLoad1);
             this.Controls.Add(this.digits_numericUpDown);
             this.Controls.Add(this.startNumber_numericUpDown);
@@ -361,6 +342,7 @@ namespace DrawingNumberingPlugin
             this.MaximumSize = new System.Drawing.Size(560, 430);
             this.MinimumSize = new System.Drawing.Size(560, 430);
             this.Name = "MainForm";
+            this.ShowInTaskbar = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Drawing numbering";
             ((System.ComponentModel.ISupportInitialize)(this.startNumber_numericUpDown)).EndInit();
@@ -377,7 +359,6 @@ namespace DrawingNumberingPlugin
         private System.Windows.Forms.NumericUpDown startNumber_numericUpDown;
         private System.Windows.Forms.NumericUpDown digits_numericUpDown;
         private Tekla.Structures.Dialog.UIControls.SaveLoad saveLoad1;
-        private Tekla.Structures.Dialog.UIControls.CreateApplyCancel createApplyCancel1;
         private System.Windows.Forms.Label preifx_label;
         private System.Windows.Forms.Label startNumber_label;
         private System.Windows.Forms.Label postfix_label;
@@ -386,9 +367,9 @@ namespace DrawingNumberingPlugin
         private System.Windows.Forms.Label writeTo_label;
         private System.Windows.Forms.ComboBox title_comboBox;
         private System.Windows.Forms.CheckBox onlyPrefix_checkBox;
-        private System.Windows.Forms.LinkLabel ddbim_linkLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label progress_label;
-        private System.Windows.Forms.LinkLabel youtube_linkLabel;
+        private System.Windows.Forms.Button create_button;
+        private System.Windows.Forms.Button cancel_button;
     }
 }

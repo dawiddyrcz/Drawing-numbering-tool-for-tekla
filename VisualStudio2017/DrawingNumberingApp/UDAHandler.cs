@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using Tekla.Structures.Catalogs;
 
-namespace DrawingNumberingPlugin
+namespace DrawingNumberingPlugin2
 {
     internal class UDAHandler
     {
@@ -103,7 +103,12 @@ namespace DrawingNumberingPlugin
 
             foreach (var currentTuple in _udaList)
             {
-                returnList.Add(currentTuple.Item2);
+                string name = currentTuple.Item2;
+
+                if (string.IsNullOrWhiteSpace(name))
+                    name = currentTuple.Item1;
+
+                returnList.Add(name);
             }
 
             return returnList;

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Tekla.Structures.Model;
-using Tekla.Structures.Plugins;
 
-namespace DrawingNumberingPlugin
+namespace DrawingNumberingPlugin2
 {
     public class DrawingNumberingPlugin_StructuresData
     {
@@ -39,16 +37,16 @@ namespace DrawingNumberingPlugin
         }
 
 
-        private class ValueCorrector : PluginBase
+        private class ValueCorrector
         {
-            public override List<InputDefinition> DefineInput()
+            internal bool IsDefaultValue(string text)
             {
-                throw new NotImplementedException();
+                return string.IsNullOrWhiteSpace(text);
             }
 
-            public override bool Run(List<InputDefinition> Input)
+            internal bool IsDefaultValue(int startNumber)
             {
-                throw new NotImplementedException();
+                return startNumber < 0;
             }
         }
     }
@@ -195,17 +193,19 @@ namespace DrawingNumberingPlugin
 
                         if (modified)
                         {
-                            currentDrawing.Modify();
+                            if (data._Title <= 3) 
+                                currentDrawing.Modify();
                             succesfulModified++;
                         }
                         currentNumber++;
                         checkedDrawings++;
                         medTimeForOne = stopwatch.Elapsed.TotalMinutes / checkedDrawings;
-
+                        
                         string message = checkedDrawings + "/" + drawingsCount + " " + Math.Round(medTimeForOne * (drawingsCount - checkedDrawings)) + " minutes left";
                         UpdateProgress(checkedDrawings, drawingsCount, message);
 
                     }
+                
                 }
                 catch (Exception ex)
                 {
@@ -217,6 +217,7 @@ namespace DrawingNumberingPlugin
                     string message = "Task has been completed. Modified drawings: " + succesfulModified.ToString() + ". Time elapsed: " 
                         + Math.Round(stopwatch.Elapsed.TotalSeconds).ToString() + " seconds";
                     UpdateProgress(0,1,message);
+                    new Model().CommitChanges();
                 }
             }
 

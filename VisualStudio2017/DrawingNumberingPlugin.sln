@@ -7,15 +7,42 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingNumberingPlugin", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingNumberingApp", "DrawingNumberingApp\DrawingNumberingApp.csproj", "{41BD1405-5CC6-4005-9372-2C38AB01AA1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingNumberingPlugin_InstallerClass", "DrawingNumberingPlugin_InstallerClass\DrawingNumberingPlugin_InstallerClass.csproj", "{887CEB28-3CB9-4C4F-9BE1-AE453356662E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DrawingNumberingPlugin_Setup", "DrawingNumberingPlugin_Setup\DrawingNumberingPlugin_Setup.vdproj", "{23D89697-846D-4532-91EC-6B05BCE537AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Publish", "Publish", "{CD845151-5601-4A2C-A2E4-3C50499D711E}"
+	ProjectSection(SolutionItems) = preProject
+		1_Build.bat = 1_Build.bat
+		3_CreateTSEP.bat = 3_CreateTSEP.bat
+		4_Reinstall_TSEP_2026.bat = 4_Reinstall_TSEP_2026.bat
+		5_BuildMsi.bat = 5_BuildMsi.bat
+		TsepDefinition.xml = TsepDefinition.xml
+		TsepDefinition_2025plus.xml = TsepDefinition_2025plus.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{97196BC5-5C5B-4476-A474-271F5C143F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97196BC5-5C5B-4476-A474-271F5C143F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97196BC5-5C5B-4476-A474-271F5C143F78}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{97196BC5-5C5B-4476-A474-271F5C143F78}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{41BD1405-5CC6-4005-9372-2C38AB01AA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41BD1405-5CC6-4005-9372-2C38AB01AA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41BD1405-5CC6-4005-9372-2C38AB01AA1C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{41BD1405-5CC6-4005-9372-2C38AB01AA1C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{887CEB28-3CB9-4C4F-9BE1-AE453356662E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887CEB28-3CB9-4C4F-9BE1-AE453356662E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887CEB28-3CB9-4C4F-9BE1-AE453356662E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{887CEB28-3CB9-4C4F-9BE1-AE453356662E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{23D89697-846D-4532-91EC-6B05BCE537AA}.Debug|Any CPU.ActiveCfg = Debug
+		{23D89697-846D-4532-91EC-6B05BCE537AA}.Debug|Any CPU.Build.0 = Debug
+		{23D89697-846D-4532-91EC-6B05BCE537AA}.Release|Any CPU.ActiveCfg = Debug
+		{23D89697-846D-4532-91EC-6B05BCE537AA}.Release|Any CPU.Build.0 = Debug
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

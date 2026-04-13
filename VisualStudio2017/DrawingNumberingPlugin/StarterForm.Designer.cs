@@ -1,4 +1,5 @@
-﻿namespace DrawingNumberingPlugin
+﻿
+namespace DrawingNumberingPlugin2
 {
     partial class StarterForm
     {
@@ -29,33 +30,40 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StarterForm));
-            this.start_button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // start_button
+            // button1
             // 
-            this.start_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.start_button.Location = new System.Drawing.Point(0, 0);
-            this.start_button.Name = "start_button";
-            this.start_button.Size = new System.Drawing.Size(212, 47);
-            this.start_button.TabIndex = 0;
-            this.start_button.Text = "Run Drawing Numbering Tool";
-            this.start_button.UseVisualStyleBackColor = true;
-            this.start_button.Click += new System.EventHandler(this.button1_Click);
+            this.structuresExtender.SetAttributeName(this.button1, null);
+            this.structuresExtender.SetAttributeTypeName(this.button1, null);
+            this.structuresExtender.SetBindPropertyName(this.button1, null);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(202, 58);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Start Drawing Numbering Tool";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // StarterForm
             // 
+            this.structuresExtender.SetAttributeName(this, null);
+            this.structuresExtender.SetAttributeTypeName(this, null);
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 47);
-            this.Controls.Add(this.start_button);
+            this.structuresExtender.SetBindPropertyName(this, null);
+            this.ClientSize = new System.Drawing.Size(202, 58);
+            this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StarterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StarterForm";
+            this.Text = "Starter";
             this.TopMost = true;
             this.ResumeLayout(false);
 
@@ -63,6 +71,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button start_button;
+        private System.Windows.Forms.Button button1;
     }
 }
